@@ -29,7 +29,7 @@ def part1():
         else:
             print("OH NO")
             
-    print("PART 1:")ok
+    print("PART 1:")
     print("Horizontal: " + str(horizontalposition))
     print("Depth: " + str(depth))
     print("Multiplied: " + str(depth*horizontalposition))
