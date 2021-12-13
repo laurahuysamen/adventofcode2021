@@ -38,7 +38,7 @@ def do_fold(mygrid, fold_instruction):
                 newgrid[ix - newi, j] = mygrid[ix+newi, j]
                 
         for i in range(folded_x):
-            for j in range(folded_y-1):
+            for j in range(folded_y):
                 folded_grid[i,j] = mygrid[i, j] + newgrid[i,j]
                 
     elif direction == 'x': ## numpy Y
