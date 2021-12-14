@@ -98,7 +98,6 @@ def part2():
                 first_step[b] += 1
     
     #print(letters_running_count)
-    #print(first_step)
     
     previous_step = first_step
     for step in range(39):
@@ -115,17 +114,6 @@ def part2():
                 next_step[b] += val
         previous_step = next_step
     
-    # for step in range(40):
-        # next_step.append(step)
-    print(letters_running_count)
-    
-    
-    
-    # for step in range(40):
-        # polymer = calculate_step(polymer, pairdict)
-        # print (len(polymer))
-        
-       
     occurances = Counter(letters_running_count)
     print(occurances)
     common = occurances.most_common()
