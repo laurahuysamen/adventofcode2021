@@ -202,6 +202,8 @@ def part2():
         #lit_cuboids = new_lit_cuboids
 
     result = sum([get_instruction_size(c) for c in lit_cuboids])
+
+    result = 0
     print("result: " + str(result))
 
 def get_instruction_size(ins):
