@@ -241,6 +241,198 @@ def is_overlapping(ins1, ins2):
     result = (xrange[1] - xrange[0]) >= 0 and (yrange[1] - yrange[0]) >= 0 and (zrange[1] - zrange[0]) >= 0
     #print(result)
     return result
+    draw(cubes)
+
+# def draw(nparray):
+
+    # fig = plt.figure()
+    # ax = plt.axes(projection='3d')
     
+    # xdata = []
+    # ydata = []
+    # zdata = []
+    # cdata = []
+    # (xshape,yshape,zshape) = nparray.shape
+    
+    # for x in range(xshape):
+        # for y in range(yshape):
+            # for z in range(zshape):
+                # xdata.append(x),
+                # ydata.append(y)
+                # zdata.append(z)
+                # cdata.append(nparray[x,y,z])
+    
+    # ax.scatter3D(xdata, ydata, zdata, c=cdata, cmap="winter")
+    # plt.show()
+    
+    
+    
+            # # for x in range(xrange[0], xrange[1]+1):
+            # # for y in range(yrange[0], yrange[1]+1):
+                # # for z in range(zrange[0], zrange[1]+1):
+                    # # print (f"updating {x},{y},{z}")
+                    # # cubes[x,y,z] = state
+
+
+    # print("PART 2:")
+    # lines = read_file()
+    
+    # instructions = []
+    # minx = 0
+    # maxx = 0
+    # miny = 0
+    # maxy = 0
+    # minz = 0
+    # maxz = 0
+    # xs = []
+    # ys = []
+    # zs = []
+    
+    # for line in lines:
+        # splitline = line.replace(".", " ").replace(",", " ").replace("=", " ").split()
+        # state = 1 if splitline[0] == "on" else 0
+        # #print (splitline)
+        # xunsorted = [int(splitline[2]), int(splitline[3])]
+        # yunsorted = [int(splitline[5]), int(splitline[6])]
+        # zunsorted = [int(splitline[8]), int(splitline[9])]
+        # xrange = [min(xunsorted), max(xunsorted)]
+        # yrange = [min(yunsorted), max(yunsorted)]
+        # zrange = [min(zunsorted), max(zunsorted)]
+        
+        # xs.extend(xrange)
+        # ys.extend(yrange)
+        # zs.extend(zrange)
+        # instructions.append((state, xrange, yrange, zrange))
+        # #print (instructions)
+    # print(min(xs))
+    # print(max(xs))
+    # print(min(ys))
+    # print(max(ys))
+    # print(min(zs))
+    # print(max(zs))
+    # #we need to do some sort of constraint. 
+    
+    # slice = np.zeros(((maxx-minx),(maxy-miny)), dtype="int8")
+    # #if we were to take thin slices off the top, for a single z value, could we calculate the total lit squares of x & y?
+    # #or if we were to take one line at a time... 
+    # total_lit = 0
+    # for x in range(min(xs), max(xs)+1):
+        # for y in range(min(ys), max(ys)+1):
+            # print(f"Running for layer x = {x} and layer y = {y}")
+            
+            # lit_layer = {}
+            # for instruction in instructions:
+                # (state, xrange, yrange, zrange) = instruction
+                
+                # if x < xrange[0] or x > xrange[1]:
+                    # continue #it's out of x range, ignore it.
+                # if y < yrange[0] or y > yrange[1]:
+                    # continue #it's out of y range, ignore it.
+                # else: 
+                    # print (instruction)
+                    # for z in range(zrange[0], zrange[1] + 1):
+                        # lit_layer[z] = state
+            # addlights = sum(lit_layer.values())
+            # print(f"Adding lights: {addlights}")
+            # total_lit += addlights
+        
+    # for instruction in instructions:
+        # print (instruction)
+        # (state, xrange, yrange, zrange) = instruction
+        
+
+    # result = total_lit
+    # print("result: " + str(result))
+    
+    
+    
+    
+    
+    
+    # --------------------
+    
+    
+        # print("PART 2:")
+    # lines = read_file()
+    
+    # instructions = []
+    # minx = 0
+    # maxx = 0
+    # miny = 0
+    # maxy = 0
+    # minz = 0
+    # maxz = 0
+    # xs = []
+    # ys = []
+    # zs = []
+    
+    # for line in lines:
+        # splitline = line.replace(".", " ").replace(",", " ").replace("=", " ").split()
+        # state = 1 if splitline[0] == "on" else 0
+        # #print (splitline)
+        # xunsorted = [int(splitline[2]), int(splitline[3])]
+        # yunsorted = [int(splitline[5]), int(splitline[6])]
+        # zunsorted = [int(splitline[8]), int(splitline[9])]
+        # xrange = (min(xunsorted), max(xunsorted))
+        # yrange = (min(yunsorted), max(yunsorted))
+        # zrange = (min(zunsorted), max(zunsorted))
+        
+        # xs.extend(xrange)
+        # ys.extend(yrange)
+        # zs.extend(zrange)
+        # instructions.append((state, xrange, yrange, zrange))
+        # #print (instructions)
+        
+        
+    # lit_cuboids = [instructions[0]]
+    # for instruction in instructions[1:]:
+        # print(f"instruction: {instruction}")
+        # #print (lit_cuboids)
+        # new_lit_cuboids = []
+        # for lit_cuboid in lit_cuboids:
+            # #print(f"lit_cuboid: {lit_cuboid}")
+            
+            # #first find out if it overlaps at all, cause if not we can skip all this
+            # if not is_overlapping(lit_cuboid, instruction):
+                # new_lit_cuboids.append(lit_cuboid)
+            # else:
+                # #split lit_cuboid and add back only lit ones.
+                # (xs,ys,zs) = find_all_coordinate_pairs(lit_cuboid, instruction)
+                # allsubcuboids = []
+                # #there are 27 sub-cuboids which could be lit or unlit. 
+                # #generate all 27 of them
+                # for i in range(3):
+                    # for j in range(3):
+                        # for k in range(3):
+                            # subcuboid = (0, (xs[i] , xs[i+1]),(ys[j] , ys[j+1]),(zs[k] , zs[k+1]))
+                            # allsubcuboids.append(subcuboid)
+                # #print (f"Allsubcuboids: {allsubcuboids}")
+                
+                # newsubcuboids = []
+                # for subcuboid in allsubcuboids: #light up the ones that should initially be lit:
+                    # if is_overlapping(subcuboid, lit_cuboid):
+                        # (_, x,y,z) = subcuboid
+                        # newsubcuboids.append((1, x, y, z))
+                    # else: 
+                        # newsubcuboids.append(subcuboid)
+                # allsubcuboids = newsubcuboids
+                
+                # newsubcuboids = []
+                # for subcuboid in allsubcuboids: #light up the ones that should now be lit:
+                    # if is_overlapping(subcuboid, instruction):
+                        # (_, x,y,z) = subcuboid
+                        # newsubcuboids.append((instruction[0], x, y, z))
+                    # else: 
+                        # newsubcuboids.append(subcuboid)
+                # allsubcuboids = newsubcuboids
+                
+                # #then, add the lit ones back:
+                # new_lit_cuboids.extend([s for s in allsubcuboids if s[0] == 1])
+            
+        
+        # lit_cuboids = new_lit_cuboids
+
+    # result = sum([get_instruction_size(c) for c in lit_cuboids])
+    # print("result: " + str(result))
 if __name__ == "__main__":
     main()
